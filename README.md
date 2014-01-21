@@ -1,0 +1,4 @@
+PokeThello
+==========
+
+Othello feat Pokemon
