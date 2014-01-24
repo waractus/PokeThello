@@ -1,0 +1,94 @@
+
+
+fonction IAEngineMax ( EtatPion colorJoueur, int fin, int prof)
+
+	//envoi visiteur case pour etablir la liste des cases jouables
+	tmp=0;
+	res=0;
+	casetmp=1ere case liste;
+	rep pour toutes les cases
+		SimulerCoup(colorJoueur,case)); // place un pion couleur ia a l'emplacement de la case jouable et simule le coup (retourne les pions)
+
+		if(prof==fin)
+			tmp=calculerPoints(colorJoueur);
+		else
+			if(color.isBlanc())
+				colorJoueur=colorJoueur.toNoir();
+			else
+				colorJoueur=colorJoueur.toBlanc();
+			end
+			tmp=IAEngineMin(colorJoueur, prof+1);
+		end
+		AnnulerCoup(); // on annule le coup pour jouer le suivant
+		//on recup
+		res=max(tmp,res);
+		if(res==tmp && prof==0) // pour recup la case ouil faut jouer
+			casetmp=case;
+	end
+	if(prof==0)
+		jouerCoup(colorJoueur,Case);
+	end
+	return res;
+end
+
+
+
+fonction IAEngineMin ( EtatPion colorJoueur, int fin, int prof)
+
+	//envoi visiteur case pour etablir la liste des cases jouables
+	tmp=99999;
+	res=99999;
+	casetmp=1ere case liste;
+	rep pour toutes les cases
+		SimulerCoup(colorJoueur,case)); // place un pion couleur ia a l'emplacement de la case jouable et simule le coup (retourne les pions)
+
+		if(prof==fin)
+			tmp=calculerPoints(colorJoueur);
+		else
+			if(color.isBlanc())
+				colorJoueur=colorJoueur.toNoir();
+			else
+				colorJoueur=colorJoueur.toBlanc();
+			end
+			tmp=IAEngineMax(colorJoueur, prof+1);
+		end
+		AnnulerCoup(); // on annule le coup pour jouer le suivant
+		//on recup
+		res=min(tmp,res);
+		if(res==tmp && prof==0) // pour recup la case ouil faut jouer
+			casetmp=case;
+	end
+	if(prof==0)
+		jouerCoup(colorJoueur,Case);
+	end
+	return res;
+end
+
+
+
+
+
+fonction SimulerCoup(EtatPion colorJoueur,case)
+	listeCommande.add(new CommandJouer(case));
+	
+	recup cases a retourner par application des regles.
+	if(colorJoueur= blanc)
+		rep pour toutes les cases
+			listeCommande.add(new CommandRetournerBlanc(case));
+		fin rep
+	else
+		rep pour toutes les cases
+			listeCommande.add(new CommandRetournerNoir(case));
+		fin rep
+	end
+	rep pour toutes les commandes
+		Commande.execute();
+	fin
+end
+
+fonction annulerCoup
+	rep pour toutes les commandes
+		Commande.annuler();
+	fin
+	Vider la liste
+end
