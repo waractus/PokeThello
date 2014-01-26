@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Rules {
 	int profondeur;
-	public boolean peutPlusJouer(Grille g){
+	public boolean peutPlusJouer(Grid g){
 		return (g.listeCasesJouables().isEmpty());
 	}
 	
@@ -22,17 +22,17 @@ public class Rules {
 	
 	public boolean coupJouableLigne(Case c, Player j, Direction dir)
 	{
-		EtatPion color= j.getEtatPion();
+		StatePawn color= j.getEtatPion();
 		Case caseSuivante;
 		do
 		{
 		  caseSuivante=dir.toutDroit(c);
-		}while(caseSuivante!=null || caseSuivante.getEtatPion()!=color);
-		return caseSuivante.getEtatPion()==color;
+		}while(caseSuivante!=null || caseSuivante.getPawn().getStatePawn()!=color);
+		return caseSuivante.getPawn().getStatePawn()==color;
 		
 	}
 	
-	public int calculatePoints(EtatPion colorPlayer){
+	public int calculatePoints(StatePawn colorPlayer){
 		return 0;
 	}
 	/*MIN MAX

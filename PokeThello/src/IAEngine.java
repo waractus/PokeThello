@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 public class IAEngine {
 	private Rules rules;
-	private Game game;
+	private GameEngine game;
 	
 	public int max(int a, int b){
 		if(a>b)
@@ -19,7 +19,7 @@ public class IAEngine {
 	}
 	
 	
-	public int IAEngineMax ( EtatPion colorPlayer, int fin, int prof)
+	public int IAEngineMax ( StatePawn colorPlayer, int fin, int prof)
 	{
 		List coupJouables = game.getListCasePlayable(colorPlayer);// se charge de generer la liste des cases jouables et de la renvoyer.
 		int tmp=0;
@@ -38,7 +38,7 @@ public class IAEngine {
 			}
 			else
 			{
-				if(colorPlayer.estEtatPion(EtatPionBlanc.getEtat()))
+				if(colorPlayer.isStatePawn(StatePawnWhite.getEtat()))
 				{
 					colorPlayer=colorPlayer.toNoir();
 				}
@@ -61,7 +61,7 @@ public class IAEngine {
 	}
 	
 	
-	public int IAEngineMin ( EtatPion colorPlayer, int fin, int prof)
+	public int IAEngineMin ( StatePawn colorPlayer, int fin, int prof)
 	{
 		List coupJouables = game.getListCasePlayable(colorPlayer);// se charge de generer la liste des cases jouables et de la renvoyer.
 		int tmp=0;
@@ -80,7 +80,7 @@ public class IAEngine {
 			}
 			else
 			{
-				if(colorPlayer.estEtatPion(EtatPionBlanc.getEtat()))
+				if(colorPlayer.isStatePawn(StatePawnWhite.getEtat()))
 				{
 					colorPlayer=colorPlayer.toNoir();
 				}
@@ -102,7 +102,7 @@ public class IAEngine {
 		return res;
 	}
 	
-	public void simulerCoup(EtatPion colorPlayer, Case c){
+	public void simulerCoup(StatePawn colorPlayer, Case c){
 		
 	}
 	

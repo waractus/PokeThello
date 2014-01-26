@@ -1,8 +1,8 @@
 
 public class Player {
-	public EtatPion color;
+	public StatePawn color;
 	
-	public EtatPion getEtatPion()
+	public StatePawn getEtatPion()
 	{
 		return color;
 	}

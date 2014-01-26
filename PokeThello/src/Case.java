@@ -1,17 +1,32 @@
 
 public class Case {
 	int x;
-	int y;
-	Grille grille;
-	EtatPion c;
+	int y;	
+	private Pawn pawn;
+	private StateCase stateCase;
 	
+	
+	public Case(int x , int y){
+		this.x = x;
+		this.y = y;
+		pawn = null;		
+	}	
 	
 	public Case donneDir(int x, int y)
 	{
-		return grille.getCase(this.x-x, this.y-y);
+		return null;
 	}
 	
-	public EtatPion getEtatPion(){
-		return this.c;
+	public boolean isEmpty()
+	{
+		return pawn== null;
+	}
+	
+	public StateCase getStateCase(){
+		return this.stateCase;
+	}
+	
+	public Pawn getPawn(){
+		return pawn;
 	}
 }

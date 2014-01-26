@@ -1,7 +1,9 @@
 import java.util.*;
-public class Game {
-	List listCasePlayable;
-	public ArrayList getListCasePlayable(EtatPion colorPlayer){
+
+public class GameEngine {
+	private Grid grid;
+	
+	public ArrayList getListCasePlayable(StatePawn colorPlayer){
 		//lancer visiteurs pour etablir la liste 
 		return null;
 	}
@@ -12,7 +14,7 @@ public class Game {
 	}
 	
 	//joue un coup en notifiant les observateurs (meme code que simuler dans IAEngine
-	public void playRound(EtatPion colorPlayer,Case c){
+	public void playRound(StatePawn colorPlayer,Case c){
 		
 	}
 }
