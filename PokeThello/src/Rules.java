@@ -31,6 +31,10 @@ public class Rules {
 		return caseSuivante.getEtatPion()==color;
 		
 	}
+	
+	public int calculatePoints(EtatPion colorPlayer){
+		return 0;
+	}
 	/*MIN MAX
 	public void jouer(Grille g){
 		int max_val = (int)Float.NEGATIVE_INFINITY;$
