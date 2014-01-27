@@ -1,7 +1,7 @@
 
 public interface StatePawn {
-	public StatePawn toBlanc();
-	public StatePawn toNoir();
+	public StatePawn toWhite();
+	public StatePawn toBlack();
 	public boolean isStatePawn(StatePawn c);	
 	public String getImg();
 }

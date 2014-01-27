@@ -12,7 +12,7 @@ public class Case {
 		pawn = null;		
 	}	
 	
-	public Case donneDir(int x, int y)
+	public Case giveDir(int x, int y)
 	{
 		return null;
 	}

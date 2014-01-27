@@ -1,7 +1,6 @@
-import java.io.*;
+
 import java.util.*;
 public class IAEngine {
-	private Rules rules;
 	private GameEngine game;
 	
 	public int max(int a, int b){
@@ -21,41 +20,41 @@ public class IAEngine {
 	
 	public int IAEngineMax ( StatePawn colorPlayer, int fin, int prof)
 	{
-		List coupJouables = game.getListCasePlayable(colorPlayer);// se charge de generer la liste des cases jouables et de la renvoyer.
+		List<Case> movePlayable = game.getListCasePlayable(colorPlayer);// se charge de generer la liste des cases jouables et de la renvoyer.
 		int tmp=0;
 		int res=0;
-		Iterator<Case> it= coupJouables.iterator();
+		Iterator<Case> it= movePlayable.iterator();
 		Case casetmp=it.next();
 		Case c;
 		while(it.hasNext())
 		{
 			c=it.next();
-			simulerCoup(colorPlayer,c); // place un pion couleur ia a l'emplacement de la case jouable et simule le coup (retourne les pions)
+			simulateMove(colorPlayer,c); // place un pion couleur ia a l'emplacement de la case jouable et simule le coup (retourne les pions)
 	
 			if(prof==fin)
 			{
-				tmp=rules.calculatePoints(colorPlayer);
+				tmp=game.calculatePoints(colorPlayer);
 			}
 			else
 			{
 				if(colorPlayer.isStatePawn(StatePawnWhite.getEtat()))
 				{
-					colorPlayer=colorPlayer.toNoir();
+					colorPlayer=colorPlayer.toBlack();
 				}
 				else
 				{
-					colorPlayer=colorPlayer.toBlanc();
+					colorPlayer=colorPlayer.toWhite();
 				}
 				tmp=IAEngineMin(colorPlayer,fin, prof+1);
 			}
-			game.cancelRound(); // on annule le coup pour jouer le suivant
+			game.cancelMove(); // on annule le coup pour jouer le suivant
 			//on recup
 			res=max(tmp,res);
 			if(res==tmp && prof==0) // pour recup la case ouil faut jouer
 				casetmp=c;
 		}
 		if(prof==0){
-			game.playRound(colorPlayer,casetmp);
+			game.playMove(colorPlayer,casetmp);
 		}
 		return res;
 	}
@@ -63,46 +62,47 @@ public class IAEngine {
 	
 	public int IAEngineMin ( StatePawn colorPlayer, int fin, int prof)
 	{
-		List coupJouables = game.getListCasePlayable(colorPlayer);// se charge de generer la liste des cases jouables et de la renvoyer.
+		List<Case> movePlayable = game.getListCasePlayable(colorPlayer);// se charge de generer la liste des cases jouables et de la renvoyer.
 		int tmp=0;
 		int res=0;
-		Iterator<Case> it= coupJouables.iterator();
+		Iterator<Case> it= movePlayable.iterator();
 		Case casetmp=it.next();
 		Case c;
 		while(it.hasNext())
 		{
 			c=it.next();
-			simulerCoup(colorPlayer,c); // place un pion couleur ia a l'emplacement de la case jouable et simule le coup (retourne les pions)
+			simulateMove(colorPlayer,c); // place un pion couleur ia a l'emplacement de la case jouable et simule le coup (retourne les pions)
 	
 			if(prof==fin)
 			{
-				tmp=rules.calculatePoints(colorPlayer);
+				tmp=game.calculatePoints(colorPlayer);
 			}
 			else
 			{
 				if(colorPlayer.isStatePawn(StatePawnWhite.getEtat()))
 				{
-					colorPlayer=colorPlayer.toNoir();
+					colorPlayer=colorPlayer.toBlack();
 				}
 				else
 				{
-					colorPlayer=colorPlayer.toBlanc();
+					colorPlayer=colorPlayer.toWhite();
 				}
 				tmp=IAEngineMax(colorPlayer,fin, prof+1);
 			}
-			game.cancelRound(); // on annule le coup pour jouer le suivant
+			game.cancelMove(); // on annule le coup pour jouer le suivant
 			//on recup
 			res=min(tmp,res);
 			if(res==tmp && prof==0) // pour recup la case ouil faut jouer
 				casetmp=c;
 		}
 		if(prof==0){
-			game.playRound(colorPlayer,casetmp);
+			game.playMove(colorPlayer,casetmp);
 		}
 		return res;
 	}
 	
-	public void simulerCoup(StatePawn colorPlayer, Case c){
+	//TODO
+	public void simulateMove(StatePawn colorPlayer, Case c){
 		
 	}
 	

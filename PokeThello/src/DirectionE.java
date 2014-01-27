@@ -9,15 +9,15 @@ public class DirectionE implements Direction{
 	* @param Case c origine
 	* @return Case destination
 	*/
-	public Case toutDroit(Case c) {
-		return c.donneDir(1,0);
+	public Case straight(Case c) {
+		return c.giveDir(1,0);
 	}
 
 	/**
 	* Renvoie la direction horaire de la case
 	* @return Direction
 	*/
-	public Direction voisinHoraire() {
+	public Direction nextRight() {
 		return DirectionSE.getDirection();
 	}
 
@@ -25,7 +25,7 @@ public class DirectionE implements Direction{
 	* Renvoie la direction coté antihoraire de la case
 	* @return Direction
 	*/
-	public Direction voisinAntiHoraire() {
+	public Direction nextLeft() {
 		return DirectionNE.getDirection();
 	}
 

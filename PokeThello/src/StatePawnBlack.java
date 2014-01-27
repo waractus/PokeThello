@@ -1,5 +1,5 @@
 /**	
-* Class EtatPionNoir
+* Class EtatPionBlack
 */
 public class StatePawnBlack implements StatePawn{
 	private static StatePawn statePawn=new StatePawnBlack();
@@ -9,7 +9,7 @@ public class StatePawnBlack implements StatePawn{
 
 
 
-	public StatePawn toNoir()
+	public StatePawn toBlack()
 	{
 		return this;
 	}
@@ -19,7 +19,7 @@ public class StatePawnBlack implements StatePawn{
 	* rend la case vide
 	* @return CaseEtat
 	*/
-	public StatePawn toBlanc()
+	public StatePawn toWhite()
 	{
 		return StatePawnWhite.getEtat();
 	}
