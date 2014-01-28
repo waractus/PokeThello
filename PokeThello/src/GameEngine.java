@@ -1,10 +1,25 @@
 import java.util.*;
 
-public class GameEngine {
+public class GameEngine implements Observable  {
 	private Grid grid;
-	private List<Case> listCasePlayable;
+	private ArrayList<Case> listCasePlayable;
+	private ArrayList<Observer> listObs;
 	
-	//TODO
+	
+	public GameEngine()
+	{
+		grid = new Grid();
+		listCasePlayable = new ArrayList<Case>();
+		listObs = new ArrayList<Observer>();
+		grid.initGrid();
+	}
+	
+	public Grid getGrid() {
+		return grid;
+	}
+	
+	
+	
 	public List<Case> getListCasePlayable(StatePawn colorPlayer){
 		//lancer visiteurs pour etablir la liste 
 		return null;
@@ -53,4 +68,38 @@ public class GameEngine {
 	public int calculatePoints(StatePawn colorPlayer){
 		return 0;
 	}
+
+
+	
+	public void registerObs(Observer obs) {
+		this.listObs.add(obs);		
+	}	
+	public void unregisterObs(Observer obs) {
+		this.listObs.remove(obs);	
+		
+	}	
+	public void notifyObs() {
+		for (Observer obs : this.listObs)
+			obs.notifyObserver();		
+	}
+
+
+
+	public static void main(String[] args) {
+		GameEngine game = new GameEngine();
+		
+		
+		OthelloText text= new OthelloText(game);
+		
+		game.registerObs(text);
+		
+		
+		game.notifyObs();
+	}
+	
+	
+	
+
+
+	
 }

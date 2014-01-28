@@ -28,10 +28,14 @@ public class StatePawnWhite implements StatePawn{
 	}
 	
 	
-	public boolean isStatePawn(StatePawn c){
-		return c==this;
+	public boolean isWhite(){
+		return true;
 	}
 	
+
+	public boolean isBlack(){
+		return false;
+	}
 	/**
 	* Retourne le chemin de l'image representant l'objet
 	* @return String

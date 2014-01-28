@@ -37,7 +37,7 @@ public class IAEngine {
 			}
 			else
 			{
-				if(colorPlayer.isStatePawn(StatePawnWhite.getEtat()))
+				if(colorPlayer.isWhite())
 				{
 					colorPlayer=colorPlayer.toBlack();
 				}
@@ -79,7 +79,7 @@ public class IAEngine {
 			}
 			else
 			{
-				if(colorPlayer.isStatePawn(StatePawnWhite.getEtat()))
+				if(colorPlayer.isWhite())
 				{
 					colorPlayer=colorPlayer.toBlack();
 				}

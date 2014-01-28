@@ -26,9 +26,15 @@ public class StatePawnBlack implements StatePawn{
 	
 	
 	
-	public boolean isStatePawn(StatePawn c){
-		return c==this;
+	public boolean isWhite(){
+		return false;
 	}
+	
+
+	public boolean isBlack(){
+		return true;
+	}
+	
 	
 	/**
 	* Retourne le chemin de l'image representant l'objet
