@@ -3,7 +3,6 @@ public class Case {
 	int x;
 	int y;	
 	private Pawn pawn;
-	private StateCase stateCase;
 	
 	
 	public Case(int x , int y){
@@ -22,9 +21,7 @@ public class Case {
 		return pawn== null;
 	}
 	
-	public StateCase getStateCase(){
-		return this.stateCase;
-	}
+	
 	
 	public Pawn getPawn(){
 		return pawn;
