@@ -1,10 +1,10 @@
 /**	
 * Class EtatPionWhite
 */
-public class StatePawnWhite implements StatePawn{
-	private static StatePawn statePawn=new StatePawnWhite();
+public class StatePawnWhite extends StatePawn{
+	private static StatePawn statePawn=new StatePawnBlack();
 	
-	private StatePawnWhite(){}
+	public StatePawnWhite(){}
 	
 	public static StatePawn getEtat(){ 
 		return statePawn;
@@ -14,7 +14,7 @@ public class StatePawnWhite implements StatePawn{
 
 	public StatePawn toBlack()
 	{
-		return StatePawnBlack.getEtat();
+		return statePawn;
 	}
 	
 	

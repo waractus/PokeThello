@@ -60,8 +60,8 @@ public class GameEngine implements Observable  {
 		do
 		{
 		  caseSuivante=dir.straight(c);
-		}while(caseSuivante!=null || caseSuivante.getPawn().getStatePawn()!=color);
-		return caseSuivante.getPawn().getStatePawn()==color;
+		}while(caseSuivante!=null || caseSuivante.getStatePawn()!=color);
+		return caseSuivante.getStatePawn()==color;
 		
 	}
 	//TODO
@@ -87,15 +87,27 @@ public class GameEngine implements Observable  {
 
 	public static void main(String[] args) {
 		GameEngine game = new GameEngine();
-		
+		Player playerH1 = new Human(game,new StatePawnBlack());
+		Player playerH2 = new Human(game,new StatePawnWhite());
 		
 		OthelloText text= new OthelloText(game);
 		
-		game.registerObs(text);
+		game.registerObs(text);		
+		
+		game.notifyObs();		
+		//game.getGrid().getCase(3,3).setCaseBlack();		
+		//game.notifyObs();
 		
 		
+		playerH1.play(game.getGrid().getCase(2,3));
 		game.notifyObs();
+		playerH2.play(game.getGrid().getCase(2,4));
+		game.notifyObs();
+		
+		
 	}
+
+	
 	
 	
 	

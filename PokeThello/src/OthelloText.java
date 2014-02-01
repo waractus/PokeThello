@@ -15,7 +15,7 @@ public class OthelloText implements Observer{
 
 	public void showGrid(){
 		
-		
+		System.out.println("---------------------------------");
 		for (int i = 0 ; i<8; i++)
 		{
 			for(int j = 0 ; j <8; j++)
@@ -23,9 +23,9 @@ public class OthelloText implements Observer{
 				
 				if(game.getGrid().getCase(i, j).isEmpty())
 					System.out.print("|   ");
-				else if(game.getGrid().getCase(i,j).getPawn().getStatePawn().isBlack())
+				else if(game.getGrid().getCase(i,j).getStatePawn().isWhite())
 					System.out.print("| O ");
-				else if(game.getGrid().getCase(i,j).getPawn().getStatePawn().isBlack())
+				else if(game.getGrid().getCase(i,j).getStatePawn().isBlack())
 					System.out.print("| X ");
 					
 			}
@@ -33,6 +33,9 @@ public class OthelloText implements Observer{
 			System.out.println("|");
 			System.out.println("---------------------------------");
 		}
+		
+		System.out.println();
+		System.out.println();
 		
 		
 	}

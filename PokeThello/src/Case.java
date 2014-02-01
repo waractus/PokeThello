@@ -2,13 +2,13 @@
 public class Case {
 	int x;
 	int y;	
-	private Pawn pawn;
+	private StatePawn statePawn;
 	
 	
 	public Case(int x , int y){
 		this.x = x;
 		this.y = y;
-		pawn = null;		
+		statePawn = null;		
 	}	
 	
 	public Case giveDir(int x, int y)
@@ -18,12 +18,31 @@ public class Case {
 	
 	public boolean isEmpty()
 	{
-		return pawn== null;
+		return statePawn== null;
 	}
 	
 	
 	
-	public Pawn getPawn(){
-		return pawn;
+	public StatePawn getStatePawn(){
+		return statePawn;
 	}
+	
+	public void setStatePawn(StatePawn st){
+		statePawn = st;	
+	}
+	
+	public void setCaseBlack(){
+		if(statePawn==null)
+			statePawn=new StatePawnBlack();
+		else 		
+			statePawn=statePawn.toBlack();
+	}
+	
+	public void setCaseWhite(){
+		if(statePawn==null)
+			statePawn=new StatePawnWhite();
+		else		
+			statePawn=statePawn.toWhite();
+	}
+	
 }
